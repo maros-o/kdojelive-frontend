@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./index.css";
 import Header from "./components/Header";
 import StreamList from "./components/StreamList";
@@ -23,10 +23,7 @@ const getStreams = async () => {
 
 const App = () => {
   const [streams, setStreams] = useState([]);
-
-  useEffect(() => {
-    console.log(streams);
-  }, [streams]);
+  const bottomObserver = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,7 +45,8 @@ const App = () => {
   return (
     <div className="bg-mainbg w-full h-full min-h-screen">
       <Header />
-      <StreamList streams={streams} />
+      <StreamList streams={streams} bottomObserver={bottomObserver} />
+      <div ref={bottomObserver} />
     </div>
   );
 };

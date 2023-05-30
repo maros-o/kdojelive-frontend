@@ -1,16 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StreamItem from "./StreamItem";
 import { motion } from "framer-motion";
 
-const numberOfStreams = 16
+const numberOfStreams = 16;
 
-const StreamList = ({streams}) => {
-  const [streamsLimit, setStreamsLimit] = useState(numberOfStreams);
+const StreamList = ({ streams, bottomObserver }) => {
+  const [streamsLimit, setStreamsLimit] = useState(0);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const handleObserver = (entries) => {
+      const target = entries[0];
+      if (target.isIntersecting) {
+        setStreamsLimit((prev) => prev + numberOfStreams);
+      }
+    };
+
+    const observer = new IntersectionObserver(handleObserver, observerOptions);
+    observer.observe(bottomObserver.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   const limitedStreams = streams.slice(0, streamsLimit);
 
   return (
-    <div className="flex w-full justify-center">
+    <div className="flex w-full justify-center pb-6">
       <div className="flex flex-col">
         <div className="flex flex-wrap justify-center max-w-[1200px] w-full">
           {limitedStreams.map((stream, idx) => {
@@ -19,23 +39,16 @@ const StreamList = ({streams}) => {
                 key={idx}
                 animate={{ scale: 1 }}
                 initial={{ scale: 0 }}
-                transition={{ duration: 0.2, delay: (idx - (streamsLimit - numberOfStreams)) * 0.06 }}
+                transition={{
+                  duration: 0.2,
+                  delay: (idx - (streamsLimit - numberOfStreams)) * 0.06,
+                }}
               >
                 <StreamItem stream={stream} />
               </motion.div>
             );
           })}
         </div>
-        {streamsLimit < streams.length && (
-          <div className="flex justify-center w-full">
-            <button
-              className="bg-headerbg text-white/70 rounded-md px-3 py-1.5 mt-5 mb-8 hover:bg-slate-800 transition-all duration-200"
-              onClick={() => setStreamsLimit(streamsLimit + 16)}
-            >
-              načíst další
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
