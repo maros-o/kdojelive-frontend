@@ -39,7 +39,7 @@ const StreamItem = ({ stream }) => {
           <div
             className="absolute w-[30px] h-[30px] top-[8px] right-[8px]"
             style={{
-              backgroundImage: `url(src/resources/${stream.platform}logo.png)`,
+              backgroundImage: `url(https://raw.githubusercontent.com/maros-o/kdojelive-frontend/main/src/resources/${stream.platform}logo.png)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
