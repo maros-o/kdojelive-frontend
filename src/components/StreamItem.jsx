@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 const hoverTitleColors = {
-  'youtube': '#EE1C25',
+  'youtube': '#ff4f57',
   'twitch': '#a76bff',
-  'trovo': '#1AC66F',
+  'trovo': '#28d47d',
 }
 
 const StreamItem = ({ stream }) => {
