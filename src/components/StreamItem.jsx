@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+const hoverTitleColors = {
+  'youtube': '#EE1C25',
+  'twitch': '#9146FF',
+  'trovo': '#1AC66F',
+}
+
 const StreamItem = ({ stream }) => {
   const [hover, setHover] = useState(false);
 
@@ -60,7 +66,7 @@ const StreamItem = ({ stream }) => {
           <div className="ms-1.5 flex flex-col space-y-0 h-[40px]">
             <div
               className={`text-white/95 font-semibold text-[16px] truncate max-w-[242px] h-[20px] transition-all duration-300`}
-              style={{ color: hover ? "#9cc7ff" : "rgb(255, 255, 255, 0.95)" }}
+              style={{ color: hover ? hoverTitleColors[stream.platform] : "rgb(255, 255, 255, 0.95)" }}
             >
               {stream.title}
             </div>
