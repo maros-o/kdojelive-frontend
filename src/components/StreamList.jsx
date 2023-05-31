@@ -30,7 +30,7 @@ const StreamList = ({ streams, bottomObserver }) => {
   const limitedStreams = streams.slice(0, streamsLimit);
 
   return (
-    <div className="flex w-full justify-center pb-6">
+    <div className="flex w-full justify-center">
       <div className="flex flex-col">
         <div className="flex flex-wrap justify-center max-w-[1200px] w-full">
           {limitedStreams.map((stream, idx) => {

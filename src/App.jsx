@@ -45,6 +45,9 @@ const App = () => {
   return (
     <div className="bg-mainbg w-full h-full min-h-screen">
       <Header />
+      <div className="text-center text-white/60 my-2 tracking-wide">
+        cz/sk streamy na jedné stránce
+      </div>
       <StreamList streams={streams} bottomObserver={bottomObserver} />
       <div ref={bottomObserver} />
     </div>

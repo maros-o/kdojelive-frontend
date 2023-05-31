@@ -4,7 +4,7 @@ const StreamItem = ({ stream }) => {
   const [hover, setHover] = useState(false);
 
   return (
-    <div className="mt-5 mx-2 text-white max-w-[284px] w-full">
+    <div className="mb-5 mx-2 text-white max-w-[284px] w-full">
       <div
         className={`flex flex-col ${hover ? "cursor-pointer" : null}`}
         onMouseEnter={() => {
@@ -39,7 +39,7 @@ const StreamItem = ({ stream }) => {
           <div
             className="absolute w-[30px] h-[30px] top-[8px] right-[8px]"
             style={{
-              backgroundImage: `url(https://raw.githubusercontent.com/maros-o/kdojelive-frontend/main/src/resources/${stream.platform}logo.png)`,
+              backgroundImage: `url(${stream.platform}logo.png)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
