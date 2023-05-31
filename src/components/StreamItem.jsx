@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const hoverTitleColors = {
   'youtube': '#EE1C25',
-  'twitch': '#9146FF',
+  'twitch': '#a76bff',
   'trovo': '#1AC66F',
 }
 
