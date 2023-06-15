@@ -11,7 +11,6 @@ const ORDER_BY_OPTIONS = {
 const filterBySearch = (streams, searchFilterRaw, orderBy, categoryFilter) => {
   let filteredStreams = [...streams];
 
-
   switch (orderBy) {
     case ORDER_BY_OPTIONS.DESC:
       filteredStreams.sort((a, b) => {
@@ -27,9 +26,11 @@ const filterBySearch = (streams, searchFilterRaw, orderBy, categoryFilter) => {
       break;
   }
 
-  filteredStreams = filteredStreams.filter((stream) => {
-    return categoryFilter.has(stream.category);
-  });
+  if (!categoryFilter.has("Vybrat vše")) {
+    filteredStreams = filteredStreams.filter((stream) => {
+      return categoryFilter.has(stream.category);
+    });
+  }
 
   const searchFilter = searchFilterRaw.trim().toLowerCase();
   if (searchFilter === "") {
@@ -51,7 +52,12 @@ const StreamOptions = ({ streams, setFilteredStreams }) => {
   const [orderBy, setOrderBy] = useState(ORDER_BY_OPTIONS.DESC);
 
   useEffect(() => {
-    let filteredStreams = filterBySearch(streams, searchFilter, orderBy, categoryFilter);
+    let filteredStreams = filterBySearch(
+      streams,
+      searchFilter,
+      orderBy,
+      categoryFilter
+    );
     setFilteredStreams(filteredStreams);
   }, [searchFilter, categoryFilter, orderBy, streams]);
 
@@ -60,7 +66,10 @@ const StreamOptions = ({ streams, setFilteredStreams }) => {
       <div className="flex flex-wrap max-w-[1200px] w-full text-white/90 px-2">
         <div className="flex w-full flex-col gap-3 items-center sm:flex-row sm:justify-between sm:items-center">
           <div className="flex justify-start items-center gap-2">
-            <Categories streams={streams} setCategoryFilter={setCategoryFilter} />
+            <Categories
+              streams={streams}
+              setCategoryFilter={setCategoryFilter}
+            />
             <Search
               searchFilter={searchFilter}
               setSearchFilter={setSearchFilter}
