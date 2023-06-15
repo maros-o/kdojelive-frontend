@@ -75,7 +75,7 @@ const StreamItem = ({ stream }) => {
         </div>
       </div>
       {stream.category ? (
-        <div className="mt-[7px] text-[14px] border rounded-lg inline-block px-[7px] py-[1px] truncate border-[#212530] bg-[#2e3342] text-white/90 w-min">
+        <div className="mt-[7px] text-[14px] border rounded-lg inline-block px-[7px] py-[1px] truncate max-w-[284px] border-[#212530] bg-[#2e3342] text-white/90 w-min">
           {stream.category}
         </div>
       ) : null}

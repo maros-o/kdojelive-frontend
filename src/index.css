@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.message-container {
+  width: 100%;
+  height: 248px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
 :root {
   overflow-y: scroll;
 }
@@ -13,7 +20,7 @@
 }
 
 html::-webkit-scrollbar {
-  width: 8px;
+  width: 9px;
 }
 
 html::-webkit-scrollbar-track {
@@ -23,4 +30,40 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-thumb {
   background: rgb(80, 80, 80);
   border-radius: 20px;
+}
+
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #555555;
+  border-radius: 4px;
+  outline: none;
+  background-color: #333333;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transform: translate(4px, 6px);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #555555;
+}
+
+input[type="checkbox"]::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 12px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: translate(4px, -7px) rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+input[type="checkbox"]:checked::after {
+  opacity: 1;
 }

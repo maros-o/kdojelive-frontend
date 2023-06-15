@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "./index.css";
 import Header from "./components/Header";
 import StreamList from "./components/StreamList";
+import StreamOptions from "./components/StreamOptions";
 
 const getStreams = async () => {
   const response = await fetch(
@@ -23,6 +24,7 @@ const getStreams = async () => {
 
 const App = () => {
   const [streams, setStreams] = useState([]);
+  const [filteredStreams, setFilteredStreams] = useState([]);
   const bottomObserver = useRef(null);
 
   useEffect(() => {
@@ -45,10 +47,13 @@ const App = () => {
   return (
     <div className="bg-mainbg w-full h-full min-h-screen">
       <Header />
-      <div className="text-center text-white/60 my-2 tracking-wide">
-        cz/sk streamy na jedné stránce
+      <div className="absolute w-full mt-4 z-0">
+        <div className="text-center text-white/60 tracking-wide sm:block hidden">
+          cz/sk streamy na jedné stránce
+        </div>
       </div>
-      <StreamList streams={streams} bottomObserver={bottomObserver} />
+      <StreamOptions streams={streams} setFilteredStreams={setFilteredStreams} />
+      <StreamList streams={filteredStreams} bottomObserver={bottomObserver} />
       <div ref={bottomObserver} />
     </div>
   );
