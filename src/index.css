@@ -32,6 +32,9 @@ html::-webkit-scrollbar-thumb {
   border-radius: 20px;
 }
 
+[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
+}
 
 input[type="checkbox"] {
   -webkit-appearance: none;

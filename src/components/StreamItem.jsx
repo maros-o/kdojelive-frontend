@@ -61,7 +61,7 @@ const StreamItem = ({ stream }) => {
             width={40}
             height={40}
             alt={stream.title}
-            className="rounded-full"
+            className="rounded-full pointer-events-none"
           />
           <div className="ms-1.5 flex flex-col space-y-0 h-[40px]">
             <div
