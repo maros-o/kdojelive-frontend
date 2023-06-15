@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 const hoverTitleColors = {
-  'youtube': '#ff4f57',
-  'twitch': '#a76bff',
-  'trovo': '#28d47d',
-}
+  youtube: "#ff4f57",
+  twitch: "#a76bff",
+  trovo: "#28d47d",
+};
 
 const StreamItem = ({ stream }) => {
   const [hover, setHover] = useState(false);
@@ -43,7 +43,7 @@ const StreamItem = ({ stream }) => {
             diváků
           </div>
           <div
-            className="absolute w-[30px] h-[30px] top-[8px] right-[8px]"
+            className="absolute w-[30px] h-[30px] top-[8px] right-[8px] border rounded-md border-black/20"
             style={{
               backgroundImage: `url(https://raw.githubusercontent.com/maros-o/kdojelive-frontend/main/public/${stream.platform}logo.png)`,
               backgroundSize: "cover",
@@ -66,7 +66,11 @@ const StreamItem = ({ stream }) => {
           <div className="ms-1.5 flex flex-col space-y-0 h-[40px]">
             <div
               className={`text-white/95 font-semibold text-[16px] truncate max-w-[242px] h-[20px] transition-all duration-300`}
-              style={{ color: hover ? hoverTitleColors[stream.platform] : "rgb(255, 255, 255, 0.95)" }}
+              style={{
+                color: hover
+                  ? hoverTitleColors[stream.platform]
+                  : "rgb(255, 255, 255, 0.95)",
+              }}
             >
               {stream.title}
             </div>
